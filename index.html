@@ -1,9 +1,13 @@
-
 <!doctype html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <style>
+    #content {
+      white-space: pre-wrap; /* mantiene gli a capo */
+      font-family: sans-serif;
+    }
+
     .spoiler {
       background: #111;
       color: transparent;
@@ -22,37 +26,31 @@
   </style>
 </head>
 <body>
-  <p> Here's a walktrough for the game Just a Little Longer </p>
-  <p>
-    Switch on the lights!
-    <span class="spoiler" onclick="this.classList.toggle('revealed')">
-      You have to click on the switch to let switch on the lights
-    </span>.
-  </p>
-  <p>
-    <span class="spoiler" onclick="this.classList.toggle('revealed')">
-     Power up the generator.
-    </span>
-    <br/>
-    <span class="spoiler" onclick="this.classList.toggle('revealed')">
-      The generator uses steam to run
-    </span>
-    <br/>
-    <span class="spoiler" onclick="this.classList.toggle('revealed')">
-      You need water to make steam, but it's leaking from the pipe
-    </span>
-    <br/>
-    <span class="spoiler" onclick="this.classList.toggle('revealed')">
-      Maybe there's something to close the leaking pipe.
-    </span>
-    <br/>
-    <span class="spoiler" onclick="this.classList.toggle('revealed')">
-      Use the handle to close the valve on the leaking pipe
-    </span>
-  </p>
+
+<div id="content"></div>
+
+<script>
+  const rawText = `
+Here's a walktrough for the game Just a Little Longer|
+
+
+Switch on the lights!
+||You have to click on the switch to let switch on the lights||
+||Power up the generator ||
+|| The generator uses steam to run||
+||You need water to make steam, but it's leaking from the pipe||
+||Maybe there's something to close the leaking pipe.||
+||Use the handle to close the valve on the leaking pipe||
+  `;
+
+  function parseSpoilers(text) {
+    return text.replace(/\|\|(.*?)\|\|/g, (_, content) => {
+      return `<span class="spoiler" onclick="this.classList.toggle('revealed')">${content}</span>`;
+    });
+  }
+
+  document.getElementById("content").innerHTML = parseSpoilers(rawText);
+</script>
+
 </body>
 </html>
-
-
-
-
