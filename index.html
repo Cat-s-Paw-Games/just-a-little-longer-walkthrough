@@ -1,0 +1,37 @@
+
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    .spoiler {
+      background: #111;
+      color: transparent;
+      border-radius: 4px;
+      padding: 0 4px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .spoiler.revealed {
+      color: inherit;
+      background: transparent;
+      user-select: text;
+    }
+  </style>
+</head>
+<body>
+  <p> Here's a walktrough for the game Just a Little Longer </p>
+  <p>
+    Switch on the lights!
+    <span class="spoiler" onclick="this.classList.toggle('revealed')">
+      You have to click on the switch to let switch on the lights
+    </span>.
+  </p>
+</body>
+</html>
+
+
+
+
